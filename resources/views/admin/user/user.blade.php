@@ -2,9 +2,11 @@
 
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Galary</h1>
-
+    <h1 class="h3 mb-0 text-gray-800">{{$heading}}</h1>
 </div>
+@if (Session::has('success'))
+<x-alert-success />
+@endif
 <div class="card shadow">
     <div class="card-header">
         <a href=" {{ route('create_galary') }} " class="btn btn-success btn-icon-split float-right">
@@ -13,7 +15,7 @@
                 <i class="icofont-plus"></i>
             </span>
         </a>
-        <h5 class="card-title">Galary</h5>
+        <h5 class="card-title">{{$heading}}</h5>
     </div>
     <div class="card-body">
         <table class="table table-hover">
@@ -31,7 +33,7 @@
                     <td>Mark</td>
                     <td>Otto</td>
                     <td>
-                        <a href="{{ route('edit_blog') }}" class="btn btn-warning btn-sm">
+                        <a href="#" class="btn btn-warning btn-sm">
                             {{-- <i class="fas fa-exclamation-triangle"></i> --}}
                             <i class="icofont-pen-alt-2"></i>
                         </a>

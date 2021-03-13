@@ -8,7 +8,8 @@ class UserContrller extends Controller
 {
     public function index(Request $req)
     {
-        return view('admin/user/user');
+        $data['heading'] = 'Users';
+        return view('admin/user/user', $data);
     }
     public function create(Request $req)
     {

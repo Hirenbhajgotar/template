@@ -13,6 +13,8 @@ class AdminController extends Controller
      */
     public function index()
     {
+        // echo auth()->user()->role;
+        // exit;
         return view('admin/home');
     }
 

@@ -75,7 +75,7 @@ class BannerController extends Controller
     public function destroy($id)
     {
         Banner::whereId($id)->update(['is_delete' => 1]);
-        return redirect()->route('banner')->with('success', 'Record updated successfully!');
+        return redirect()->route('banner')->with('success', 'Record deleted successfully!');
 
     }
 }

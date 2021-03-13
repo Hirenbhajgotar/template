@@ -14,19 +14,14 @@ use App\Http\Controllers\TestimonialContrller;
 use App\Http\Controllers\UserContrller;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
+});
+// !logout route
+Route::get('/logout', function() { 
+    auth()->logout();
+    return redirect('/login');
 });
 Route::middleware(['auth:sanctum'])->group(function() {
     Route::get('admin', [AdminController::class, 'index'])->name('admin');
@@ -59,20 +54,29 @@ Route::middleware(['auth:sanctum'])->group(function() {
     // !Galary
     Route::get('admin/galary', [GalaryContrller::class, 'index'])->name('galary');
     Route::get('admin/galary/add', [GalaryContrller::class, 'create'])->name('create_galary');
-    Route::get('admin/galary/edit', [GalaryContrller::class, 'edit'])->name('edit_galary');
+    Route::post('admin/galary/add', [GalaryContrller::class, 'store'])->name('store_galary');
+    Route::get('admin/galary/edit/{id}', [GalaryContrller::class, 'edit'])->name('edit_galary');
+    Route::post('admin/galary/edit/{id}', [GalaryContrller::class, 'update'])->name('update_galary');
+    Route::get('admin/galary/delete/{id}', [GalaryContrller::class, 'destroy'])->name('delete_galary');
     // !Team
     Route::get('admin/team', [TeamContrller::class, 'index'])->name('team');
     Route::get('admin/team/add', [TeamContrller::class, 'create'])->name('create_team');
-    Route::get('admin/team/edit', [TeamContrller::class, 'edit'])->name('edit_team');
+    Route::post('admin/team/add', [TeamContrller::class, 'store'])->name('store_team');
+    Route::get('admin/team/edit/{id}', [TeamContrller::class, 'edit'])->name('edit_team');
+    Route::post('admin/team/edit/{id}', [TeamContrller::class, 'update'])->name('update_team');
+    Route::get('admin/team/delete/{id}', [TeamContrller::class, 'destroy'])->name('delete_team');
     // !Testimonial
     Route::get('admin/testimonial', [TestimonialContrller::class, 'index'])->name('testimonial');
     Route::get('admin/testimonial/add', [testimonialContrller::class, 'create'])->name('create_testimonial');
-    Route::get('admin/testimonial/edit', [testimonialContrller::class, 'edit'])->name('edit_testimonial');
+    Route::post('admin/testimonial/add', [testimonialContrller::class, 'store'])->name('store_testimonial');
+    Route::get('admin/testimonial/edit/{id}', [testimonialContrller::class, 'edit'])->name('edit_testimonial');
+    Route::post('admin/testimonial/edit/{id}', [testimonialContrller::class, 'update'])->name('update_testimonial');
+    Route::get('admin/testimonial/delete/{id}', [testimonialContrller::class, 'destroy'])->name('delete_testimonial');
     // !User
     Route::get('admin/user', [UserContrller::class, 'index'])->name('user');
     Route::get('admin/user/add', [UserContrller::class, 'create'])->name('create_user');
     Route::get('admin/user/edit', [UserContrller::class, 'edit'])->name('edit_user');
-    // !Categor
+    // !Category
     // Route::get('admin/category', [UserContrller::class, 'index'])->name('category');
     // Route::get('admin/category/add', [UserContrller::class, 'create'])->name('create_category');
     // Route::get('admin/category/edit', [UserContrller::class, 'edit'])->name('edit_category');
@@ -99,4 +103,5 @@ Route::middleware(['auth:sanctum'])->group(function() {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    re
+    return view('dashboard');
+})->name('dashboard');

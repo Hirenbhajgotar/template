@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->integer('role')->default(3)->comment('1: super admin, 2: admin, 3: user, '); //1: user, 2: super admin, 3: admin 
             $table->string('password');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
