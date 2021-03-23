@@ -10,12 +10,7 @@
 @endif
 <div class="card shadow">
     <div class="card-header">
-        <a href=" {{ route('create_testimonial') }} " class="btn btn-success btn-icon-split float-right">
-            <span class="text">Add</span>
-            <span class="icon text-white-50">
-                <i class="icofont-plus"></i>
-            </span>
-        </a>
+        <x-add-btn :route="'create_testimonial'" />
         <h5 class="card-title">{{$heading}}</h5>
     </div>
     <div class="card-body">
@@ -45,14 +40,8 @@
                         <img class="img-fluid" src="{{asset(env('STORAGE_DIR').env('TESTIMONIAL_DIR').$testimonial->image)}}" alt="">
                     </td>
                     <td>
-                        <a href="{{ route('edit_testimonial', $testimonial->id) }}" class="btn btn-warning btn-sm">
-                            {{-- <i class="fas fa-exclamation-triangle"></i> --}}
-                            <i class="icofont-pen-alt-2"></i>
-                        </a>
-                        <a href="{{ route('delete_testimonial', $testimonial->id) }}" class="btn btn-danger btn-sm">
-                            {{-- <i class="fas fa-trash"></i> --}}
-                            <i class="icofont-trash"></i>
-                        </a>
+                        <x-update-btn :route="'edit_testimonial'" :id="$testimonial->id" />
+                        <x-delete-btn :route="'delete_testimonial'" :id="$testimonial->id" />
                     </td>
                 </tr>
                 @php

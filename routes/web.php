@@ -2,12 +2,14 @@
 
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminTypeController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BlogContrller;
 use App\Http\Controllers\ContactUsContrller;
 use App\Http\Controllers\FaqContrller;
 use App\Http\Controllers\GalaryContrller;
 use App\Http\Controllers\OrderContrller;
+use App\Http\Controllers\PermisionController;
 use App\Http\Controllers\SettingContrller;
 use App\Http\Controllers\TeamContrller;
 use App\Http\Controllers\TestimonialContrller;
@@ -23,7 +25,14 @@ Route::get('/logout', function() {
     auth()->logout();
     return redirect('/login');
 });
-Route::middleware(['auth:sanctum'])->group(function() {
+Route::get('/404', function() {
+    return abort(404);
+})->name('not_found');
+Route::get('/401', function() {
+    return abort(401);
+})->name('not_authorized');
+
+Route::middleware(['auth:sanctum', 'verified', 'isAdmin'])->group(function() {
     Route::get('admin', [AdminController::class, 'index'])->name('admin');
     // !About Us
     Route::get('admin/about-us', [AboutUsController::class, 'index'])->name('about_us');
@@ -100,6 +109,22 @@ Route::middleware(['auth:sanctum'])->group(function() {
     // Route::get('admin/seting', [SettingContrller::class, 'index'])->name('seting');
     // Route::get('admin/seting/add', [SettingContrller::class, 'create'])->name('create_seting');
     // Route::get('admin/seting/edit', [SettingContrller::class, 'edit'])->name('edit_seting');
+    // !Admin Type
+    Route::get('admin/admin-type', [AdminTypeController::class, 'index'])->name('admin_type');
+    Route::get('admin/admin-type/add', [AdminTypeController::class, 'create'])->name('create_admin_type');
+    Route::post('admin/admin-type/add', [AdminTypeController::class, 'store'])->name('store_admin_type');
+    Route::get('admin/admin-type/edit/{id}', [AdminTypeController::class, 'edit'])->name('edit_admin_type');
+    Route::post('admin/admin-type/edit/{id}', [AdminTypeController::class, 'update'])->name('update_admin_type');
+    Route::get('admin/admin-type/delete/{id}', [AdminTypeController::class, 'destroy'])->name('delete_admin_type');
+    // !Permisions
+    Route::get('admin/permision', [PermisionController::class, 'index'])->name('permisions');
+    Route::get('admin/permision/add', [PermisionController::class, 'create'])->name('create_permisions');
+    Route::post('admin/permision/add', [PermisionController::class, 'create'])->name('store_permisions');
+    Route::get('admin/permision/edit/{id}', [PermisionController::class, 'edit'])->name('edit_permisions');
+    Route::post('admin/permision/edit/{id}', [PermisionController::class, 'update'])->name('update_permisions');
+    Route::get('admin/permision/delete/{id}', [PermisionController::class, 'destroy'])->name('delete_permisions');
+
+
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

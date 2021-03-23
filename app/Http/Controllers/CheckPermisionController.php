@@ -2,25 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Permision;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class CheckPermisionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $req)
+    public function check()
     {
-        // dd($req->checkPermision);
-        // echo auth()->user()->role;
-        // exit;
-        // if(auth()->user()->role === 1) { // super admin redirect
-        // } else if(auth()->user()->role === 3) { // user redirect
-        // }
-        return view('admin/home');
+        $permision = Permision::where([['admin_type', '=', auth()->user()->role]])->first();
+        return $permision;
     }
+
+    public function redirectIfNotPermision()
+    {
+        if (auth()->user()->role != 1) {
+            return redirect()->route('not_authorized');
+        }
+    }
+
+    public function index($admin_type_id)
+    {
+        // auth()->user()->role
+        
+    }
+
 
     /**
      * Show the form for creating a new resource.

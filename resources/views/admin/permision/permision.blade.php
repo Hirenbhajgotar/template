@@ -11,8 +11,13 @@
 @endif
 <div class="card shadow">
     <div class="card-header">
-        <x-add-btn :route="'create_aboute_us'" />
-        <h5 class="card-title">About Us</h5>
+        <a href=" {{ route('create_permisions') }} " class="btn btn-success btn-icon-split float-right">
+            <span class="text">Add</span>
+            <span class="icon text-white-50">
+                <i class="icofont-plus"></i>
+            </span>
+        </a>
+        <h5 class="card-title">{{$heading}}</h5>
     </div>
 
     <div class="card-body">
@@ -27,21 +32,20 @@
                 </tr>
             </thead>
             <tbody>
-                @if ($aboutUs)
+                @if ($permisions)
                 @php
                 $i = 1;
                 @endphp
-                @foreach ($aboutUs as $item)
+                @foreach ($permisions as $item)
                 <tr>
                     <th scope="row">{{ $i }}</th>
-                    <td>{{ $item->title }}</td>
-                    <td>{{ strip_tags($item->sort_description) }}</td>
+                    <td></td>
+
                     <td>
-                        <img src="{{ asset(env('STORAGE_DIR').env('ABOUT_US_DIR').$item->image) }}" alt="" class="img-fluid">
-                    </td>
-                    <td>
-                        {{-- update component --}}
-                        <x-update-btn :route="'edit_aboute_us'" :id="$item->id" />
+                        <a href="{{ route('edit_permisions', $item->id) }}" class="btn btn-warning btn-sm">
+                            {{-- <i class="fas fa-exclamation-triangle"></i> --}}
+                            <i class="icofont-pen-alt-2"></i>
+                        </a>
                         {{-- <a href="#" class="btn btn-danger btn-sm">
                                         <i class="icofont-trash"></i>
                                     </a> --}}

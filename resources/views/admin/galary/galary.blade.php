@@ -10,12 +10,7 @@
 @endif
 <div class="card shadow">
     <div class="card-header">
-        <a href=" {{ route('create_galary') }} " class="btn btn-success btn-icon-split float-right">
-            <span class="text">Add</span>
-            <span class="icon text-white-50">
-                <i class="icofont-plus"></i>
-            </span>
-        </a>
+        <x-add-btn :route="'create_galary'" />
         <h5 class="card-title">Galary</h5>
     </div>
     <div class="card-body">
@@ -44,14 +39,9 @@
                     </td>
                     <td>
                         {{-- {{ route('edit_galary') }} --}}
-                        <a href="{{ route('edit_galary', $galary->id) }}" class="btn btn-warning btn-sm">
-                            {{-- <i class="fas fa-exclamation-triangle"></i> --}}
-                            <i class="icofont-pen-alt-2"></i>
-                        </a>
-                        <a href="{{ route('delete_galary', $galary->id) }}" class="btn btn-danger btn-sm">
-                            {{-- <i class="fas fa-trash"></i> --}}
-                            <i class="icofont-trash"></i>
-                        </a>
+                        <x-update-btn :route="'edit_galary'" :id="$galary->id" />
+                        <x-delete-btn :route="'delete_galary'" :id="$galary->id" />
+                        
                     </td>
                 </tr>
                 @php

@@ -9,9 +9,17 @@ use Illuminate\Support\Facades\Validator;
 
 class AboutUsController extends Controller
 {
+    protected $CheckPermisionObj;
+    public function __construct(CheckPermisionController $CheckPermisionObj)
+    {
+        $this->CheckPermisionObj = $CheckPermisionObj;
+    }
     public function index(Request $req)
     {
+        $CheckPermision = $this->CheckPermisionObj->check();
         $data['aboutUs'] = AboutUs::all();
+        $data['rights'] = $CheckPermision;
+
         return view('admin/about_us/about_us', $data);
     }
 
