@@ -35,7 +35,7 @@
                 <tr>
                     <th scope="row">{{ $i }}</th>
                     <td>{{ $item->title }}</td>
-                    <td>{{ strip_tags($item->sort_description) }}</td>
+                    <td>{{ strip_tags($item->short_description) }}</td>
                     <td>
                         <img src="{{ asset(env('STORAGE_DIR').env('ABOUT_US_DIR').$item->image) }}" alt="" class="img-fluid">
                     </td>

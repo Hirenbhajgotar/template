@@ -11,6 +11,7 @@ class BlogContrller extends Controller
 {
     public function index(Request $req)
     {
+        $data['heading'] = "Blog";
         $data['blogs'] = Blog::where([['is_delete', '=', 0], ['is_active', '=', 1]])->paginate(2);
         return view('admin/blog/blog', $data);
     }

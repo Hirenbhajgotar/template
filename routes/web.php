@@ -6,11 +6,13 @@ use App\Http\Controllers\AdminTypeController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BlogContrller;
 use App\Http\Controllers\ContactUsContrller;
+use App\Http\Controllers\CountryMasterController;
 use App\Http\Controllers\FaqContrller;
 use App\Http\Controllers\GalaryContrller;
 use App\Http\Controllers\OrderContrller;
 use App\Http\Controllers\PermisionController;
 use App\Http\Controllers\SettingContrller;
+use App\Http\Controllers\StateMasterController;
 use App\Http\Controllers\TeamContrller;
 use App\Http\Controllers\TestimonialContrller;
 use App\Http\Controllers\UserContrller;
@@ -123,7 +125,21 @@ Route::middleware(['auth:sanctum', 'verified', 'isAdmin'])->group(function() {
     Route::get('admin/permision/edit/{id}', [PermisionController::class, 'edit'])->name('edit_permisions');
     Route::post('admin/permision/edit/{id}', [PermisionController::class, 'update'])->name('update_permisions');
     Route::get('admin/permision/delete/{id}', [PermisionController::class, 'destroy'])->name('delete_permisions');
-
+    
+    // !Country master
+    Route::get('admin/country', [CountryMasterController::class, 'index'])->name('country_master'); 
+    Route::get('admin/country/add', [CountryMasterController::class, 'create'])->name('create_country_master'); 
+    Route::post('admin/country/add', [CountryMasterController::class, 'store'])->name('store_country_master'); 
+    Route::get('admin/country/edit/{id}', [CountryMasterController::class, 'edit'])->name('edit_country_master'); 
+    Route::post('admin/country/edit/{id}', [CountryMasterController::class, 'update'])->name('update_country_master'); 
+    Route::get('admin/country/delete/{id}', [CountryMasterController::class, 'destroy'])->name('delete_country_master'); 
+    // !State master
+    Route::get('admin/state', [StateMasterController::class, 'index'])->name('state_master'); 
+    Route::get('admin/state/add', [StateMasterController::class, 'create'])->name('create_state_master'); 
+    Route::post('admin/state/add', [StateMasterController::class, 'store'])->name('store_state_master'); 
+    Route::get('admin/state/edit/{id}', [StateMasterController::class, 'edit'])->name('edit_state_master'); 
+    Route::post('admin/state/edit/{id}', [StateMasterController::class, 'update'])->name('update_state_master'); 
+    Route::get('admin/state/delete/{id}', [StateMasterController::class, 'destroy'])->name('delete_state_master'); 
 
 });
 

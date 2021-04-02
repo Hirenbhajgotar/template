@@ -12,7 +12,7 @@ class TestimonialContrller extends Controller
     public function index(Request $req)
     {
         $data['heading'] = 'Temstimonial';
-        $data['testimonials'] = Testimonial::where([['is_delete', '=', 0], ['is_active', '=', 1]])->paginate(10);
+        // $data['testimonials'] = Testimonial::where([['is_delete', '=', 0], ['is_active', '=', 1]])->paginate(10);
         return view('admin/testimonial/testimonial', $data);
     }
     public function create(Request $req)

@@ -19,6 +19,7 @@ class AboutUsController extends Controller
         $CheckPermision = $this->CheckPermisionObj->check();
         $data['aboutUs'] = AboutUs::all();
         $data['rights'] = $CheckPermision;
+        
 
         return view('admin/about_us/about_us', $data);
     }

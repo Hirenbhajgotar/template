@@ -17,35 +17,6 @@
         </a>
         <h5 class="card-title">{{$heading}}</h5>
     </div>
-    <div class="card-body">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Sort Description</th>
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>
-                        <a href="#" class="btn btn-warning btn-sm">
-                            {{-- <i class="fas fa-exclamation-triangle"></i> --}}
-                            <i class="icofont-pen-alt-2"></i>
-                        </a>
-                        <a href="#" class="btn btn-danger btn-sm">
-                            {{-- <i class="fas fa-trash"></i> --}}
-                            <i class="icofont-trash"></i>
-                        </a>
-                    </td>
-                </tr>
-
-            </tbody>
-        </table>
-    </div>
+    @livewire('user-master')
 </div>
 @endsection

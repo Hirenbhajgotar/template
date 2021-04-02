@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
+use App\Models\State;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class AdminController extends Controller
 {
@@ -13,12 +16,6 @@ class AdminController extends Controller
      */
     public function index(Request $req)
     {
-        // dd($req->checkPermision);
-        // echo auth()->user()->role;
-        // exit;
-        // if(auth()->user()->role === 1) { // super admin redirect
-        // } else if(auth()->user()->role === 3) { // user redirect
-        // }
         return view('admin/home');
     }
 

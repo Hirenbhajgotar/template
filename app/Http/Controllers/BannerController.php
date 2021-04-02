@@ -12,7 +12,8 @@ class BannerController extends Controller
 
     public function index()
     {
-        $data['baners'] = Banner::where([['is_delete', '=', 0], ['is_active', '=', 1]])->paginate(10);
+        // $data['baners'] = Banner::where([['is_delete', '=', 0], ['is_active', '=', 1]])->paginate(10);
+        $data['heading'] = "Banner";
         return view('admin/banner/banner', $data);
     }
 
@@ -39,7 +40,7 @@ class BannerController extends Controller
         }
         $baner = Banner::create($data);
         $baner->save();
-        return redirect(route('banner'))->with('success', 'Record successfulll updated!');
+        return redirect(route('banner'))->with('success', 'Record inserted successfulll!');
     }
 
     public function edit(Request $req, $id)

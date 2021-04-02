@@ -12,7 +12,7 @@ class TeamContrller extends Controller
     public function index(Request $req)
     {
         $data['heading'] = "Team";
-        $data['teams'] = Team::where([['is_delete', '=', 0], ['is_active', '=', 1]])->paginate(10);
+        // $data['teams'] = Team::where([['is_delete', '=', 0], ['is_active', '=', 1]])->paginate(10);
         return view('admin/team/team', $data);
     }
     public function create(Request $req)

@@ -1,7 +1,6 @@
 @extends('admin/app')
 @section('content')
-<link href="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/css/froala_editor.pkgd.min.css" rel="stylesheet"
-    type="text/css" />
+<link href="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
 {{-- <link src="{{ asset('asset/froala_editor_3.2.5/css/froala_editor.min.css') }}" />
 <link src="{{ asset('asset/froala_editor_3.2.5/css/froala_style.min.css') }}" /> --}}
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/froala_editor.pkgd.min.js">
@@ -58,8 +57,7 @@
                 <div class="col-12">
                     <div class="form-group ">
                         <label for="exampleFormControlTextarea1">Sort Description</label>
-                        <textarea class="form-control" id="sort_description" name="sort_description"
-                            rows="3" >{{old('title', $aboutUs->sort_description)}}</textarea>
+                        <textarea class="form-control" id="sort_description" name="short_description" rows="3">{{old('title', $aboutUs->sort_description)}}</textarea>
                     </div>
                 </div>
             </div>

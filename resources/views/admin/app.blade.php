@@ -13,8 +13,10 @@
 
     {{-- css --}}
     @include('admin/asset/include_css')
+    <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" /> -->
     {{-- end css --}}
-
+    <link href="{{asset('asset/select2-4.1.0-rc.0/dist/css/select2.min.css')}}" rel="stylesheet" />
+    @livewireStyles
 </head>
 
 <body id="page-top">
@@ -198,7 +200,7 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('user') }}">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Users
                                 </a>
@@ -215,6 +217,15 @@
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ route('country_master') }}">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Country Master
+                                </a>
+                                <a class="dropdown-item" href="{{ route('state_master') }}">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    State Master
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{route('logout')}}">
@@ -291,12 +302,24 @@
     @include('admin/asset/include_js')
     {{-- end JS --}}
 
+
     <!-- Page level plugins -->
     <script defer src="{{ asset('asset/vendor/chart.js/Chart.min.js') }}"></script>
 
     <!-- Page level custom scripts -->
     <script defer src="{{ asset('asset/js/demo/chart-area-demo.js') }}"></script>
     <script defer src="{{ asset('asset/js/demo/chart-pie-demo.js') }}"></script>
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
+
+    @livewireScripts
+
+    <script>
+        $("#country_id").select2({
+            // theme: "bootstrap"
+        });
+        // $('#country_id').trigger('change');
+    </script>
 
 </body>
 

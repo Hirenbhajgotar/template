@@ -11,7 +11,8 @@ class GalaryContrller extends Controller
 {
     public function index(Request $req)
     {
-        $data['galaries'] = Galary::where([['is_delete', '=', 0], ['is_active', '=', 1]])->paginate(10);
+        $data['heading'] = 'Galary';
+        // $data['galaries'] = Galary::where([['is_delete', '=', 0], ['is_active', '=', 1]])->paginate(10);
         return view('admin/galary/galary', $data);
     }
     public function create(Request $req)
