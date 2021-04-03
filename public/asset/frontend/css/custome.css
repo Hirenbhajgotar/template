@@ -1,0 +1,105 @@
+:root {
+    --color1: #ff5134;
+  --color2: #18ba60;
+  --color2-hover: #46c77f;
+}
+::placeholder {
+    font-size: 15px;
+}
+.background-primary {
+    background-color: var(--color2) ;
+}
+.primary-hover:hover {
+    background-color: var(--color2-hover);
+    color: #fff;
+}
+.background-secondary {
+    background-color: var(--color1);
+}
+.grey-bg {
+    background-color: #f3f3f3;
+}
+.white-bg {
+    background-color: #fff;
+}
+.color-white {
+    color: #fff;
+}
+.hide {
+    display: none;
+}
+.show {
+    display: block;
+}
+.font-size-24 {
+    font-size: 24px;
+}
+.font-size-13 {
+    font-size: 13px;
+}
+.sidebar-menu {
+    cursor: pointer;
+}
+.sidebar-menu a {
+    padding: 15px 1.5rem;
+    display: block;
+}
+
+.sidebar-menu:hover {
+    background-color: #e7f8ef;
+}
+.profile-info-card-footer {
+    background-color: #f5fcf8 !important;
+}
+.sidebar-menu-active {
+background-color: var(--color2);
+    color: #fff !important;
+}
+.sidebar-menu-active a {
+    color: #fff !important;
+}
+.sidebar-menu-active:hover {
+    background-color: var(--color2)  !important;
+    color: #fff !important;
+}
+.sidebar-menu-active:hover a {
+color: #fff !important;
+}
+.sidebar-menu-active a {
+    color: #fff;
+    
+}
+.font-f1 {
+   font-family: "Roboto", sans-serif;
+}
+.font-w-400 {
+    font-weight: 400;
+}
+.font-w-500 {
+    font-weight: 500;
+}
+.v-align-b {
+    vertical-align: bottom;
+}
+.v-align-m {
+    vertical-align: middle;
+}
+.v-align-text-top {
+    vertical-align: text-top;
+}
+.market_expr_box {
+    margin: 20px auto;
+    text-align: center;
+}
+.market_expr_box img {
+    margin: 0 auto 20px;
+}
+.market_expr_box p{
+    color: #222325;   
+    -webkit-transition: color 0.8s; /* For Safari 3.0 to 6.0 */
+    transition: color 0.8s; /* For modern browsers */
+     
+}
+.market_expr_box:hover p {
+    color: var(--color2);
+}

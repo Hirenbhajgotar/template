@@ -5,10 +5,13 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminTypeController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BlogContrller;
+use App\Http\Controllers\buyer\BuyerController;
+use App\Http\Controllers\buyer\FeedbackController;
 use App\Http\Controllers\ContactUsContrller;
 use App\Http\Controllers\CountryMasterController;
 use App\Http\Controllers\FaqContrller;
 use App\Http\Controllers\GalaryContrller;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderContrller;
 use App\Http\Controllers\PermisionController;
 use App\Http\Controllers\SettingContrller;
@@ -19,9 +22,13 @@ use App\Http\Controllers\UserContrller;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [BuyerController::class, 'index'])->name('home');
+Route::get('/feedback', [FeedbackController::class, 'index'])->name('feedback');
+Route::post('/feedback', [FeedbackController::class, 'store_feedback'])->name('submit_feedback');
+// Route::get('/', [HomeController::class, 'index'])->name('home');
 // !logout route
 Route::get('/logout', function() { 
     auth()->logout();
